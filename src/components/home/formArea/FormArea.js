@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './FormArea.css';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +12,8 @@ import {
 } from '@material-ui/pickers';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { BookingContext } from '../../../App';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -38,21 +40,24 @@ const FormArea = () => {
   })
   const classes = useStyles();
 
+  const [booking, setBooking] = useContext(BookingContext)
 
 
-if(childs < 0){
-    setChilds(0)
-}
-if(adults < 0){
-    setAdults(0)
-}
-if(babes < 0){
-    setBabes(0)
-}
+
+        if(childs < 0){
+            setChilds(0)
+        }
+        if(adults < 0){
+            setAdults(0)
+        }
+        if(babes < 0){
+            setBabes(0)
+        }
 
 
      const handleCheckIn = date =>{
          setCheckIn(date)
+         
      }
      const handleCheckOut = date =>{
         setCheckOut(date)
@@ -63,14 +68,18 @@ if(babes < 0){
          newBook[e.target.name] = e.target.value;
          setBook(newBook)
     }
+    const history = useHistory();
     const handleSubmit = e => {
         const newBook = {...book}
-        const totalBook = {location:newBook.location, checkInDate:checkIn.toDateString("dd/MM/yyyy"), checkOutDate:checkOut.toDateString("dd/MM/yyyy"), adultsGuest:adults, childsGuest:childs, babesGuest:babes}
-       console.log(totalBook)
+        const totalBook = {location:newBook.location, checkInDate:checkIn.toDateString('dd/MM/yyyy'), checkOutDate:checkOut.toDateString('dd/MM/yyyy'), adultsGuest:adults, childsGuest:childs, babesGuest:babes}
+        setBooking(totalBook)
+        
+        history.push('/booking')
         e.preventDefault()
     }
 
-
+    const guest = adults + childs + babes;
+    
 
   
 
@@ -120,6 +129,9 @@ if(babes < 0){
                       </Grid>
                     </MuiPickersUtilsProvider>
 
+                </div>
+                <div>
+                    <h5>Guest: {guest}</h5>
                 </div>
                 <div>
                     <div className="container">
