@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import StarIcon from '@material-ui/icons/Star';
 import './Details.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
@@ -61,6 +61,12 @@ const Details = () => {
    const cleaningFee = 10;
    const servingFee = 21;
    const total = cleaningFee + servingFee + roomsRent
+
+   const history = useHistory();
+
+   const handleReserve = () => {
+     history.push('/rules')
+   }
 
    
    
@@ -212,7 +218,7 @@ const Details = () => {
                              </div>
                             </div>
                             <div className="text-center mt-2">
-                            <Button className={buttonClasses.root} >Reserve</Button>
+                            <Button onClick={handleReserve} className={buttonClasses.root} >Reserve</Button>
                             </div>
                             </div>
                     </div>

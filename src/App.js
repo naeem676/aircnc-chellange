@@ -14,6 +14,9 @@ import { useState } from 'react';
 import BookingPage from './components/bookingPage/BookingPage';
 import AddHotel from './components/bookingPage/addHotel/AddHotel';
 import Details from './components/details/Details';
+import Rules from './components/rules/Rules';
+import Traveling from './components/traveling/Traveling';
+import BillPay from './components/billPay/BillPay';
 
 
 export const BookingContext = createContext();
@@ -50,6 +53,15 @@ function App() {
           </Route>
           <Route  path='/details'>
            <Details></Details>
+          </Route>
+          <Route  path='/rules'>
+           <Rules></Rules>
+          </Route>
+          <Route  path='/traveling'>
+           <Traveling></Traveling>
+          </Route>
+          <Route  path='/billPay'>
+           <BillPay></BillPay>
           </Route>
           <Route  path='*'>
             <NoMatch></NoMatch>
