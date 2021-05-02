@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/system": "^4.11.3",
+    "@paypal/react-paypal-js": "^6.0.0",
     "@react-google-maps/api": "^2.1.1",
     "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.14.0",
