@@ -11,11 +11,11 @@ const Paypal = () => {
   
     const checkin = new Date(booking.checkInDate)
     const checkout = new Date(booking.checkOutDate)
-    const different = checkout.getDate() - checkin.getDate();
-    const roomsRent = different * rooms.cost;
+    const different = checkout.getDate() || 0 - checkin.getDate() || 0;
+    const roomsRent = different * rooms.cost || 0;
     const cleaningFee = 10;
     const servingFee = 21;
-    const total = cleaningFee + servingFee + roomsRent
+    const total = cleaningFee + servingFee + roomsRent || 0
 
     useEffect(() => {
         window.paypal

@@ -2,18 +2,42 @@ import React from 'react';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import MainCart from '../mainCart/MainCart';
 import CardApp from '../cardForm/CardApp';
-import PayPalApp from '../paypal/PayPalApp';
 import Paypal from '../paypal/Paypal';
 import Radio from '@material-ui/core/Radio';
 import paypal from './paypal.png';
+import successfully from './success-image.gif';
 import visa from './visa-mastercard-amex-2-1.gif';
+import { useState } from 'react';
+import Link from '@material-ui/core/Link';
+import { useContext } from 'react';
+import { BookingContext, HotelContext, UserContext } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 const BillPay = () => {
-    const [selectedValue, setSelectedValue] = React.useState('a');
+    const [rooms, setRooms] = useContext(HotelContext);
+    const [booking, setBooking] = useContext(BookingContext);
+    const [loggedUser, setLoggedUser] = useContext(UserContext)
+
+    const [selectedValue, setSelectedValue] = useState('a');
+    const [success, setSuccess] = useState(false);
+
+
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+  const handleSuccess = () => {
+      setSuccess(true)
+  }
+  const history = useHistory()
+  const handleGoBack = () => {
+        setRooms({})
+        setBooking({})
+        setLoggedUser({})
+        history.push('/home')
+
+  }
     return (
        <section>
            <div className="container">
@@ -47,7 +71,7 @@ const BillPay = () => {
                            </div>
                            </div>
                            { selectedValue === 'a' ? <div>
-                           <CardApp></CardApp>
+                           <CardApp handleSuccess={handleSuccess}></CardApp>
                            </div> : ''}
                        </div>
                        <div className="border border-secondary p-2 mt-2">
@@ -77,7 +101,17 @@ const BillPay = () => {
                        </div>
                    </div>
                    <div className="col-md-6">
-                       <MainCart></MainCart>
+                       {success ? <div>
+                           <img className="w-100" src={successfully} alt="" srcset=""/>
+                           <Link
+                                component="button"
+                                variant="body2"
+                                onClick={handleGoBack}
+                                >
+                                Back to home
+                                </Link>
+                       </div>
+                       : <div><MainCart></MainCart></div>}
                    </div>
                </div>
            </div>

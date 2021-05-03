@@ -56,11 +56,11 @@ const Details = () => {
     const guest = booking.adultsGuest + booking.childsGuest + booking.babesGuest;
    const checkin = new Date(booking.checkInDate)
    const checkout = new Date(booking.checkOutDate)
-   const different = checkout.getDate() - checkin.getDate();
-   const roomsRent = different * rooms.cost;
+   const different = checkout.getDate() || 0 - checkin.getDate() || 0;
+   const roomsRent = different * rooms.cost || 0;
    const cleaningFee = 10;
    const servingFee = 21;
-   const total = cleaningFee + servingFee + roomsRent
+   const total = cleaningFee + servingFee + roomsRent || 0
 
    const history = useHistory();
 
@@ -174,7 +174,7 @@ const Details = () => {
                     <div className="col-md-5 ">
                             <div className="shadow-lg p-3 mb-5 bg-body rounded">
                             <div>
-                            <h4><span className="font-weight-bold">$ {rooms.cost}/</span>night</h4>
+                            <h4><span className="font-weight-bold">$ {rooms.cost || 0}/</span>night</h4>
                             </div>
                             <div className="d-flex">
                                      <div><p className="text-success"><StarIcon/></p></div>
@@ -194,7 +194,7 @@ const Details = () => {
                             <div className="ml-5">
                             <div className="container">
                              <div className="row justify-content-center mt-2">
-                               <div className="col-sm-5">${rooms.cost} x {different}night</div>
+                               <div className="col-sm-5">${rooms.cost || 0} x {different}night</div>
                                <div className="col-sm-5">${roomsRent}</div>
                              </div>
                              </div>

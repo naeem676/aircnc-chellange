@@ -17,6 +17,9 @@ import Details from './components/details/Details';
 import Rules from './components/rules/Rules';
 import Traveling from './components/traveling/Traveling';
 import BillPay from './components/billPay/BillPay';
+import PrivateRoute from './components/login/privateroute/PrivateRoute';
+import LogIn from './components/login/LogIn';
+
 
 
 export const BookingContext = createContext();
@@ -45,9 +48,12 @@ function App() {
           <Route  path='/addHomes'>
            <AddHomes></AddHomes>
           </Route>
-          <Route  path='/booking'>
-           <BookingPage></BookingPage>
+          <Route  path='/login'>
+           <LogIn></LogIn>
           </Route>
+          <PrivateRoute  path='/booking'>
+           <BookingPage></BookingPage>
+          </PrivateRoute>
           <Route  path='/addHotel'>
            <AddHotel></AddHotel>
           </Route>

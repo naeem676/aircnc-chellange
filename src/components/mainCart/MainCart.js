@@ -7,14 +7,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const MainCart = () => {
    const [rooms, setRooms] = useContext(HotelContext);
    const [booking, setBooking] = useContext(BookingContext);
-   const guest = booking.adultsGuest + booking.childsGuest + booking.babesGuest;
+   const guest = booking.adultsGuest || 0 + booking.childsGuest || 0 + booking.babesGuest || 0;
    const checkin = new Date(booking.checkInDate)
    const checkout = new Date(booking.checkOutDate)
-   const different = checkout.getDate() - checkin.getDate();
-   const roomsRent = different * rooms.cost;
+   const different = checkout.getDate() || 0 - checkin.getDate() || 0;
+   const roomsRent = different * rooms.cost || 0;
    const cleaningFee = 10;
    const servingFee = 21;
-   const total = cleaningFee + servingFee + roomsRent
+   const total = cleaningFee  + servingFee  + roomsRent || 0;
     return (
         <div className="ml-5 mr-5">
             <div className="shadow p-3 mb-5 bg-body rounded">
@@ -22,7 +22,7 @@ const MainCart = () => {
                             <div className="row">
                             <div className="col-sm-6" >
                             <div>
-                            <h4><span className="font-weight-bold">$ {rooms.cost}/</span>night</h4>
+                            <h4><span className="font-weight-bold">$ {rooms.cost || 0}/</span>night</h4>
                             </div>
                             <div className="d-flex">
                                      <div><p className="text-success"><StarIcon/></p></div>

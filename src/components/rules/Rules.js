@@ -32,7 +32,7 @@ const Rules = () => {
   
     const checkin = new Date(booking.checkInDate)
     const checkout = new Date(booking.checkOutDate)
-    const different = checkout.getDate() - checkin.getDate();
+    const different = checkout.getDate() || 0 - checkin.getDate() || 0;
     const buttonClasses = useButtonStyles();
      
     const history = useHistory()

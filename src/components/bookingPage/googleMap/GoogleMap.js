@@ -25,7 +25,7 @@ const GoogleMap = (props) => {
                 google={props.google}
                 zoom={8}
                 style={mapStyles}
-                initialCenter={{ lat: 47.444, lng: -122.176}}
+                initialCenter={{ lat: 40.730610, lng: -73.935242}}
                 />
         </div>
     );

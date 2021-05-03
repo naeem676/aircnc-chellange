@@ -74,7 +74,9 @@ const FormArea = () => {
         const totalBook = {location:newBook.location, checkInDate:checkIn.toDateString('dd/MM/yyyy'), checkOutDate:checkOut.toDateString('dd/MM/yyyy'), adultsGuest:adults, childsGuest:childs, babesGuest:babes}
         setBooking(totalBook)
         
-        history.push('/booking')
+        if(newBook.location && checkOut && adults && childs && babes){
+            history.push('/booking')
+        }
         e.preventDefault()
     }
 
