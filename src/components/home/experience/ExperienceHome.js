@@ -4,7 +4,7 @@ import ExperienceDetails from './experienceDetails/ExperienceDetails';
 const ExperienceHome = () => {
     const [experience, setExperience] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:4000/findExperience')
+        fetch('https://safe-anchorage-48836.herokuapp.com/findExperience')
         .then(res => res.json())
         .then(data => {
             setExperience(data)

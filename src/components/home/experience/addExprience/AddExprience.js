@@ -24,7 +24,7 @@ const AddExprience = () => {
         formData.append('file', file)
 
       
-        fetch('http://localhost:4000/addExperience',{
+        fetch('https://safe-anchorage-48836.herokuapp.com/addExperience',{
             method: "POST",
             body: formData,
             

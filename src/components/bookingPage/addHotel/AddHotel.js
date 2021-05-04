@@ -22,7 +22,7 @@ const AddHotel = () => {
         formData.append('star', info.star)
         formData.append('file', file)
 
-        fetch('http://localhost:4000/addHotel',{
+        fetch('https://safe-anchorage-48836.herokuapp.com/addHotel',{
             method:'POST',
             body: formData
         })

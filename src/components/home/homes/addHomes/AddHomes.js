@@ -23,7 +23,7 @@ const AddHomes = () => {
         formData.append('star', info.star)
         formData.append('file', file)
 
-        fetch('http://localhost:4000/homeImage', {
+        fetch('https://safe-anchorage-48836.herokuapp.com/homeImage', {
             method: 'POST',
             body: formData
           })
