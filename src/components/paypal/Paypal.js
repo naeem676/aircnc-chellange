@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { BookingContext, HotelContext } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 const Paypal = () => {
     const [paid, setPaid] = useState(false);
@@ -15,7 +16,8 @@ const Paypal = () => {
     const roomsRent = different * rooms.cost || 0;
     const cleaningFee = 10;
     const servingFee = 21;
-    const total = cleaningFee + servingFee + roomsRent || 0
+    const total = cleaningFee + servingFee + roomsRent || 0;
+    const history = useHistory();
 
     useEffect(() => {
         window.paypal
@@ -38,6 +40,8 @@ const Paypal = () => {
               const order = await actions.order.capture();
               setPaid(true);
               console.log(order);
+              history.replace('/')
+
             },
             onError: (err) => {
             //   setError(err),
@@ -48,7 +52,9 @@ const Paypal = () => {
       }, []);
 
       if (paid) {
-        return <div>Payment successful.!</div>;
+        return <div>Payment successful.!</div>
+       
+        ;
       }
     
       // If any error occurs

@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './HeaderNav.css';
 
 const HeaderNav = () => {
+    const history = useHistory();
+    const handleSignIn = ()=> {
+          history.push('/login')
+    }
     return (
         <nav class="navbar navbar-expand-lg navbar-light ">
                 <div class="container-fluid">
@@ -22,10 +26,10 @@ const HeaderNav = () => {
                         <Link class="nav-link mr-4" >Help</Link>
                         </li>
                         <li class="nav-item">
-                        <Link class="nav-link mr-4" >Log in</Link>
+                        <Link class="nav-link mr-4" to="/login" >Log in</Link>
                         </li>
                         <li class="nav-item">
-                        <button type="button" class="btn btn-success">Sign up</button>
+                        <button type="button" onClick={handleSignIn} class="btn btn-success">Sign up</button>
                         </li>
                     </ul>
                     

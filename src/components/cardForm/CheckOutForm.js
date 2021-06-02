@@ -93,7 +93,8 @@ import { useHistory } from "react-router-dom";
       setProcessing(false);
       setSucceeded(true);
       alert('Your payment successfully done')
-      handleSuccess()
+      handleSuccess();
+      history.replace('/')
       
     }
   };
